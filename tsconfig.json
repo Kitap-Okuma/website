@@ -1,15 +1,30 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
+    "allowImportingTsExtensions": true,
     "checkJs": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "bundler",
     "noEmit": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
     "strict": true,
-    "allowImportingTsExtensions":true
+    "rootDir": ".",
+    "target": "es2024",
+    "verbatimModuleSyntax": true
   },
+
   "exclude": ["node_modules", "dist"],
-  "extends": "@tsconfig/svelte/tsconfig.json",
-  "include": ["src", "vite.config.ts", "svelte.config.js", "eslint.config.mjs"]
+  "include": [
+    "src/**/*",
+    "src/**/*.svelte",
+    "vite.config.ts",
+    "svelte.config.js",
+    "eslint.config.mjs",
+    "postcss.config.mjs",
+    "tailwind.config.mjs"
+  ]
 }

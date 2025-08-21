@@ -1,114 +1,107 @@
-import typescript from "typescript-eslint";
-import prettier from "eslint-plugin-prettier";
-import js from "@eslint/js";
-import svelte from "eslint-plugin-svelte";
+import { defineConfig } from "eslint/config";
+import esTs from "typescript-eslint";
+import esPrettier from "eslint-plugin-prettier";
+import esJs from "@eslint/js";
+import esSvelte from "eslint-plugin-svelte";
+import esHtml from "@html-eslint/eslint-plugin";
+import esMd from "eslint-plugin-markdown";
+import esJsonc from "eslint-plugin-jsonc";
 import svelteParser from "svelte-eslint-parser";
-import jsonc from "eslint-plugin-jsonc";
-import jsoncParser from "jsonc-eslint-parser";
-import html from "@html-eslint/eslint-plugin";
-import htmlParser from "@html-eslint/parser";
-import markdown from "eslint-plugin-markdown";
-import css from "eslint-plugin-css";
 import svelteRunes from "eslint-plugin-svelte-runes";
-export default typescript.config(
-  js.configs.recommended,
-  ...typescript.configs.recommended,
-  ...svelte.configs.recommended,
+import jsoncParser from "jsonc-eslint-parser";
+import htmlParser from "@html-eslint/parser";
+const prettierConfig = {
+  usePrettierrc: true,
+  fileInfoOptions: { withNodeModules: true },
+};
+
+export default defineConfig([
   {
-    plugins: {
-      prettier,
+    files: ["**/*.ts", "**/*.js", "**/**.mjs"],
+    plugins: { prettier: esPrettier },
+    languageOptions: {
+      parser: esTs.parser,
+      parserOptions: { project: "./tsconfig.json" },
+      globals: {
+        window: "readonly",
+        document: "readonly",
+        navigator: "readonly",
+        location: "readonly",
+        localStorage: "readonly",
+        sessionStorage: "readonly",
+      },
     },
-    languageOptions: { parserOptions: { project: "./tsconfig.json" } },
+    extends: [esJs.configs.recommended],
     rules: {
-      "prettier/prettier": [
-        "warn",
-        {},
-        {
-          usePrettierrc: true,
-          fileInfoOptions: {
-            withNodeModules: true,
-          },
-        },
-      ],
+      "prettier/prettier": ["warn", {}, prettierConfig],
     },
   },
   {
-    files: ["**/*.svelte"],
+    files: [
+      "**/*.svelte",
+      "*.svelte",
+      // Need to specify the file extension for Svelte 5 with rune symbols
+      "**/*.svelte.js",
+      "*.svelte.js",
+      "**/*.svelte.ts",
+      "*.svelte.ts",
+    ],
     languageOptions: {
       parser: svelteParser,
       parserOptions: {
-        project: "./tsconfig.json",
+        project: "./tsconfig.eslint.json",
         extraFileExtensions: [".svelte"],
-        parser: typescript.parser,
+        parser: esTs.parser,
+        globals: {
+          window: "readonly",
+          document: "readonly",
+          navigator: "readonly",
+          location: "readonly",
+          localStorage: "readonly",
+          sessionStorage: "readonly",
+        },
       },
     },
     plugins: {
-      prettier,
-      svelteRunes,
+      svelte: esSvelte,
+      prettier: esPrettier,
+      "svelte-runes": svelteRunes,
     },
     extends: [svelteRunes.configs.recommended],
     rules: {
-      "prettier/prettier": [
-        "warn",
-        {},
-        {
-          usePrettierrc: true,
-          fileInfoOptions: {
-            withNodeModules: true,
-          },
-        },
-      ],
+      "prettier/prettier": ["warn", {}, prettierConfig],
     },
   },
 
   {
     files: ["**/*.json", "**/*.jsonc", ".prettierc"],
     plugins: {
-      jsonc,
-      prettier,
+      jsonc: esJsonc.meta,
+      prettier: esPrettier,
     },
     languageOptions: {
       parser: jsoncParser,
     },
     rules: {
-      "prettier/prettier": [
-        "warn",
-        {},
-        {
-          usePrettierrc: true,
-          fileInfoOptions: {
-            withNodeModules: true,
-          },
-        },
-      ],
-      "jsonc/sort-keys": "warn",
-      "jsonc/no-comments": "off",
-      "jsonc/comma-dangle": ["error", "never"],
-      "jsonc/quote-props": ["error", "always"],
-      "jsonc/quotes": ["error", "double"],
+      "prettier/prettier": ["warn", {}, prettierConfig],
+      "@/sort-keys": ["warn"],
+      "@/no-comments": ["off"],
+      "@/comma-dangle": ["error", "never"],
+      "@/quote-props": ["error", "always"],
+      "@/quotes": ["error", "double"],
     },
   },
-
   {
     files: ["**/*.html"],
     languageOptions: {
       parser: htmlParser,
     },
     plugins: {
-      "@html-eslint": html,
-      prettier,
+      "@html-eslint": esHtml,
+      prettier: esPrettier,
     },
     rules: {
-      "prettier/prettier": [
-        "warn",
-        {},
-        {
-          usePrettierrc: true,
-          fileInfoOptions: {
-            withNodeModules: true,
-          },
-        },
-      ],
+      "prettier/prettier": ["warn", {}, prettierConfig],
       "@html-eslint/require-closing-tags": "off",
       "@html-eslint/require-doctype": "error",
       "@html-eslint/require-lang": "error",
@@ -120,25 +113,15 @@ export default typescript.config(
       "@html-eslint/indent": ["error", 2],
     },
   },
-
   {
     files: ["**/*.md"],
     plugins: {
-      markdown,
-      prettier,
+      markdown: esMd,
+      prettier: esPrettier,
     },
     processor: "markdown/markdown",
     rules: {
-      "prettier/prettier": [
-        "warn",
-        {},
-        {
-          usePrettierrc: true,
-          fileInfoOptions: {
-            withNodeModules: true,
-          },
-        },
-      ],
+      "prettier/prettier": ["warn", {}, prettierConfig],
     },
   },
 
@@ -152,23 +135,14 @@ export default typescript.config(
       },
     },
     plugins: {
-      prettier,
+      prettier: esPrettier,
     },
     rules: {
       "@typescript-eslint/no-unused-vars": "off",
       "no-console": "off",
       "no-undef": "off",
       "no-unused-vars": "off",
-      "prettier/prettier": [
-        "warn",
-        {},
-        {
-          usePrettierrc: true,
-          fileInfoOptions: {
-            withNodeModules: true,
-          },
-        },
-      ],
+      "prettier/prettier": ["warn", {}, prettierConfig],
     },
   },
 
@@ -178,51 +152,22 @@ export default typescript.config(
       parser: svelteParser,
       parserOptions: {
         extraFileExtensions: [".svelte"],
-        parser: typescript.parser,
+        parser: esTs.parser,
         ecmaFeatures: {
           impliedStrict: true,
         },
       },
     },
     plugins: {
-      prettier,
+      prettier: esPrettier,
     },
     rules: {
       "@typescript-eslint/no-unused-vars": "off",
       "no-console": "off",
       "no-undef": "off",
       "no-unused-vars": "off",
-      "prettier/prettier": [
-        "warn",
-        {},
-        {
-          usePrettierrc: true,
-          fileInfoOptions: {
-            withNodeModules: true,
-          },
-        },
-      ],
+      "prettier/prettier": ["warn", {}, prettierConfig],
       "svelte/valid-compile": "off",
     },
   },
-  {
-    files: ["**/*.css"],
-    plugins: {
-      css,
-      prettier,
-    },
-    extends: [css.configs["flat/recommended"]],
-    rules: {
-      "prettier/prettier": [
-        "warn",
-        {},
-        {
-          usePrettierrc: true,
-          fileInfoOptions: {
-            withNodeModules: true,
-          },
-        },
-      ],
-    },
-  }
-);
+]);
