@@ -33,5 +33,9 @@
     "lint:fix": "eslint . --fix",
     "preview": "vite preview"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "fluent-svelte": "^1.6.0",
+    "konsta": "^5.0.1"
+  }
 }

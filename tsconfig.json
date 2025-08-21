@@ -6,7 +6,8 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "bundler",
     "noEmit": true,
-    "strict": true
+    "strict": true,
+    "allowImportingTsExtensions":true
   },
   "exclude": ["node_modules", "dist"],
   "extends": "@tsconfig/svelte/tsconfig.json",
