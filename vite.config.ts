@@ -5,7 +5,6 @@ import { VitePWA } from "vite-plugin-pwa";
 import compression from "vite-plugin-compression";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import CleanBuild from "vite-plugin-clean-build";
-import nitro from "vite-plugin-with-nitro";
 import AppLoading from "vite-plugin-app-loading";
 import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
@@ -20,11 +19,7 @@ export default defineConfig(({ command }) => ({
     command === "build" && compression(),
     ViteImageOptimizer(),
     CleanBuild(),
-    nitro(),
     AppLoading(),
     tailwindcss(),
   ],
-  css: {
-    postcss: "./postcss.config.mjs",
-  },
 }));

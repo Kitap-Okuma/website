@@ -1,25 +1,30 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import { loadingFadeOut } from 'virtual:app-loading'
+  import { onMount, onDestroy } from "svelte";
+  import { theme, isMobile, initTheme, initIsMobile } from "@lib/stores";
+  import { loadingFadeOut } from "virtual:app-loading";
 
+  let cleanup: () => void;
 
-  let isMobile = false;
-  //0 = light, 1 = dark, 2 = darker (for mobile)
-  let theme = 0;
   onMount(() => {
-    const check = () => (isMobile = window.innerWidth <= 768);
-    check();
-    window.addEventListener("resize", check);
-    loadingFadeOut()
+    loadingFadeOut();
+
+    initTheme();
+    cleanup = initIsMobile();
+  });
+
+  onDestroy(() => {
+    cleanup?.();
   });
 </script>
 
-{#if isMobile}
-  <div>
-    <p>This is the mobile view.</p>
-  </div>
+<div>
+  <button on:click={() => theme.set(0)}>Light</button>
+  <button on:click={() => theme.set(1)}>Dark</button>
+  <button on:click={() => theme.set(2)}>Darker</button>
+</div>
+
+{#if $isMobile}
+  <p>Mobile view, theme: {$theme}</p>
 {:else}
-  <div>
-    <p>This is the desktop view.</p>
-  </div>
+  <p>Desktop view, theme: {$theme}</p>
 {/if}
