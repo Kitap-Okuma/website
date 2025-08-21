@@ -1,20 +1,12 @@
 <script lang="ts">
-  import { onMount, onDestroy } from "svelte";
-  import { theme, isMobile, initTheme, initIsMobile } from "@lib/stores";
+  import { onMount } from "svelte";
+  import { theme, isMobile } from "@lib/stores";
   import { loadingFadeOut } from "virtual:app-loading";
-
-  let cleanup: () => void;
-
+  
   onMount(() => {
     loadingFadeOut();
-
-    initTheme();
-    cleanup = initIsMobile();
   });
-
-  onDestroy(() => {
-    cleanup?.();
-  });
+ 
 </script>
 
 <div>
