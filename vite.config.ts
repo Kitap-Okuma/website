@@ -8,6 +8,7 @@ import CleanBuild from "vite-plugin-clean-build";
 import AppLoading from "vite-plugin-app-loading";
 import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
+import nitro from "vite-plugin-with-nitro";
 import { fileURLToPath } from "node:url";
 // https://vite.dev/config/
 export default defineConfig(({ command }) => ({
@@ -23,22 +24,11 @@ export default defineConfig(({ command }) => ({
     CleanBuild(),
     AppLoading(),
     tailwindcss(),
+    nitro(),
   ],
   resolve: {
     alias: {
       "@": path.resolve(path.dirname(fileURLToPath(import.meta.url)), "src"),
-      "@lib": path.resolve(
-        path.dirname(fileURLToPath(import.meta.url)),
-        "src/lib"
-      ),
-      "@ui": path.resolve(
-        path.dirname(fileURLToPath(import.meta.url)),
-        "src/ui"
-      ),
-      "@routes": path.resolve(
-        path.dirname(fileURLToPath(import.meta.url)),
-        "src/routes"
-      ),
     },
   },
 }));

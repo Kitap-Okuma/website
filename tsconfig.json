@@ -12,10 +12,7 @@
     "noEmit": true,
     "skipLibCheck": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@lib/*": ["./src/lib/*"],
-      "@ui/*": ["./src/ui/*"],
-      "@routes/*": ["./src/routes/*"]
+      "@/*": ["./src/*"]
     },
     "sourceMap": true,
     "strict": true,
@@ -27,7 +24,6 @@
   "exclude": ["node_modules", "dist"],
   "include": [
     "src/**/*",
-    "src/**/*.svelte",
     "vite.config.ts",
     "svelte.config.js",
     "eslint.config.mjs",

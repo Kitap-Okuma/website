@@ -16,12 +16,3 @@ theme.subscribe((t) => {
   localStorage.setItem("theme", t.toString());
   document.documentElement.setAttribute("data-theme", t.toString());
 });
-
-export const isMobile = writable<boolean>(false);
-
-const mql = window.matchMedia("(max-width: 768px)");
-const updateDevice = (e: MediaQueryListEvent | MediaQueryList) => {
-  isMobile.set(e.matches);
-};
-updateDevice(mql);
-mql.addEventListener("change", updateDevice);
