@@ -10,5 +10,5 @@
   },
   "exclude": ["node_modules", "dist"],
   "extends": "@tsconfig/svelte/tsconfig.json",
-  "include": ["src", "vite.config.ts", "svelte.config.ts", "eslint.config.mjs"]
+  "include": ["src", "vite.config.ts", "svelte.config.js", "eslint.config.mjs"]
 }

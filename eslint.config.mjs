@@ -9,6 +9,7 @@ import html from "@html-eslint/eslint-plugin";
 import htmlParser from "@html-eslint/parser";
 import markdown from "eslint-plugin-markdown";
 import css from "eslint-plugin-css";
+import svelteRunes from "eslint-plugin-svelte-runes";
 export default typescript.config(
   js.configs.recommended,
   ...typescript.configs.recommended,
@@ -43,7 +44,9 @@ export default typescript.config(
     },
     plugins: {
       prettier,
+      svelteRunes,
     },
+    extends: [svelteRunes.configs.recommended],
     rules: {
       "prettier/prettier": [
         "warn",
@@ -203,13 +206,13 @@ export default typescript.config(
     },
   },
   {
-  files: ["**/*.css"],
-  plugins: {
-    css,     
-    prettier,
-  },
-  extends: [css.configs["flat/recommended"]],
-  rules: {
+    files: ["**/*.css"],
+    plugins: {
+      css,
+      prettier,
+    },
+    extends: [css.configs["flat/recommended"]],
+    rules: {
       "prettier/prettier": [
         "warn",
         {},
@@ -220,6 +223,6 @@ export default typescript.config(
           },
         },
       ],
-  },
-}
+    },
+  }
 );

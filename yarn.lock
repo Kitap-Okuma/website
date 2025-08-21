@@ -851,6 +851,11 @@ eslint-plugin-prettier@^5.5.4:
     prettier-linter-helpers "^1.0.0"
     synckit "^0.11.7"
 
+eslint-plugin-svelte-runes@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-svelte-runes/-/eslint-plugin-svelte-runes-0.0.11.tgz#a1a2adb0033bc3997b1a7b29f9b9c00931d29a91"
+  integrity sha512-gJhMF/moNJsO8YJMC+4Sb8Ca6rvlgekkGtC+bqoAcwIUW27XBknl+zX/CBHLfbKjDJh781fGYF4aN5/FPUMhIw==
+
 eslint-plugin-svelte@^3.11.0:
   version "3.11.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-svelte/-/eslint-plugin-svelte-3.11.0.tgz#30486335b0aba30c065ad63172a2b38367f5d469"
