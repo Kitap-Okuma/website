@@ -1,4 +1,0 @@
-dependabot:
-  stage: package-changes
-  include:
-  - component: $CI_SERVER_FQDN/dependabot-gitlab/dependabot-standalone/template@3.61.2

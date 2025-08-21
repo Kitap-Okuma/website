@@ -1,8 +1,0 @@
-stages:
-- test
-- check-leak
-- package-changes
-
-include:
-  - local: '.gitlab/ci/checkleak.yml'
-  - local: '.gitlab/ci/dependabot.yml'

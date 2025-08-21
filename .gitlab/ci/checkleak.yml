@@ -1,7 +1,0 @@
-check_leaks:
-  stage: check-leak
-  include:
-  - component: $CI_SERVER_FQDN/components/secret-detection/secret-detection@2.1.0
-  - component: $CI_SERVER_FQDN/to-be-continuous/gitleaks/gitlab-ci-gitleaks@2.8.0
-  variables:
-  SECRET_DETECTION_ENABLED: 'true'

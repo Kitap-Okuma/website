@@ -8,6 +8,7 @@
     "@types/eslint-plugin-markdown": "^2.0.2",
     "@types/node": "^24.3.0",
     "eslint": "^9.33.0",
+    "eslint-plugin-css": "^0.11.0",
     "eslint-plugin-jsonc": "^2.20.1",
     "eslint-plugin-markdown": "^5.1.0",
     "eslint-plugin-prettier": "^5.5.4",

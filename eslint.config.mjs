@@ -8,7 +8,7 @@ import jsoncParser from "jsonc-eslint-parser";
 import html from "@html-eslint/eslint-plugin";
 import htmlParser from "@html-eslint/parser";
 import markdown from "eslint-plugin-markdown";
-
+import css from "eslint-plugin-css";
 export default typescript.config(
   js.configs.recommended,
   ...typescript.configs.recommended,
@@ -201,5 +201,25 @@ export default typescript.config(
       ],
       "svelte/valid-compile": "off",
     },
-  }
+  },
+  {
+  files: ["**/*.css"],
+  plugins: {
+    css,     
+    prettier,
+  },
+  extends: [css.configs["flat/recommended"]],
+  rules: {
+      "prettier/prettier": [
+        "warn",
+        {},
+        {
+          usePrettierrc: true,
+          fileInfoOptions: {
+            withNodeModules: true,
+          },
+        },
+      ],
+  },
+}
 );
