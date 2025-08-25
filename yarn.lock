@@ -1171,14 +1171,6 @@
     "@html-eslint/template-parser" "^0.46.0"
     "@html-eslint/template-syntax-parser" "^0.46.0"
 
-"@html-eslint/parser@^0.45.0":
-  version "0.45.0"
-  resolved "https://registry.npmjs.org/@html-eslint/parser/-/parser-0.45.0.tgz"
-  integrity sha512-dGU0IMzQTe85xk1Eqqv8H1q/JOM/yVIb4qnwCs2T/indTDUeVkQgzC0UoMoGk4yxu8rpFe2ppDZjH5E90LHzDg==
-  dependencies:
-    "@html-eslint/template-syntax-parser" "^0.45.0"
-    es-html-parser "0.3.0"
-
 "@html-eslint/parser@^0.46.0":
   version "0.46.0"
   resolved "https://registry.yarnpkg.com/@html-eslint/parser/-/parser-0.46.0.tgz#14822584d8e1aa22d155e916215c0890c0216b1e"
@@ -1193,11 +1185,6 @@
   integrity sha512-t1SWsO14hZa13t52cODHZqRfB64e0/W2NG0dCl6FIrd5O5yc5pYKwgTQ/fcsNJc3kvRkWFfs/NIjdfJ73JIPPA==
   dependencies:
     es-html-parser "0.3.0"
-
-"@html-eslint/template-syntax-parser@^0.45.0":
-  version "0.45.0"
-  resolved "https://registry.npmjs.org/@html-eslint/template-syntax-parser/-/template-syntax-parser-0.45.0.tgz"
-  integrity sha512-yQcvaaZvHBCyt0zNNTDjVsgas1doC1MBaAVHREUbmnRrX3LnEPsGoaU3OBj65ydeX+I2JQBNKAKMwiDTMR6yFA==
 
 "@html-eslint/template-syntax-parser@^0.46.0":
   version "0.46.0"
